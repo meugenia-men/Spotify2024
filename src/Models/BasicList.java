@@ -33,14 +33,17 @@ public class BasicList implements Reproduction {
     @Override
     public Song play() {
         Stack<Song> aux = new Stack<>();
-        while (! myBasicList.empty()){
+        while (!myBasicList.empty()) {
             aux.push(this.myBasicList.pop());
         }
         Song firstSong = aux.pop();
-        while(! aux.empty()){
+        while (!aux.empty()) {
             myBasicList.push(aux.pop());
         }
         myBasicList.push(firstSong);
+
+        System.out.println("------------> " + myBasicList.peek() + " Reproduciendo...");
+        System.out.println("__________________________________________________________________________");
 
         return myBasicList.peek();
     }
@@ -60,7 +63,7 @@ public class BasicList implements Reproduction {
         int cont = 1;
         System.out.println("<<<<<<<<<<<<<<<<" + name + ">>>>>>>>>>>>>>>>>>>>>>");
         for (Song song : myBasicList) {
-            System.out.println("Cancion " + cont + " - " + song.toString());
+            System.out.println("Cancion " + cont + " - " + song.getName());
             cont++;
         }
     }

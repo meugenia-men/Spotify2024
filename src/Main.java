@@ -33,6 +33,6 @@ public class Main{
         Menu menu = new Menu();
         //endregion
 
-        menu.menuGeneral();
+        menu.menuGeneral(songs);
     }
 }

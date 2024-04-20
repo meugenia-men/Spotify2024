@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class PremiumList implements Reproduction {
     private String name;
-    private LinkedList<Song> myPremiumList;
+    private LinkedList<Song> myPremiumList = null;
 
     public PremiumList(String name, LinkedList<Song> myPremiumList) {
         this.name = name;
@@ -34,11 +34,11 @@ public class PremiumList implements Reproduction {
     @Override
     public Song play() {
         this.showMyList();
-
-        System.out.println("Ingrese el titulo de la cancion que desea seleccionar : ");
+        System.out.println("Ingrese el titulo de la cancion que desea escuchar : ");
         Scanner sc = new Scanner(System.in);
         String selection = sc.nextLine();
-
+        System.out.println("------------> " + selection + " Reproduciendo...");
+        System.out.println("__________________________________________________________________________");
         return this.searchSong(selection);
     }
 
@@ -56,10 +56,15 @@ public class PremiumList implements Reproduction {
     public void showMyList() {
         int cont = 1;
         System.out.println("<<<<<<<<<<<<<<<<" + name + ">>>>>>>>>>>>>>>>>>>>>>");
-        for (Song song : myPremiumList) {
-            System.out.println("Cancion " + cont + " - " + song.toString());
-            cont++;
+        if ( !myPremiumList.isEmpty()){
+            for (Song song : myPremiumList) {
+                System.out.println("Cancion " + cont + " - " + song.getName());
+                cont++;
+            }
+        } else {
+            System.out.println("No tiene lista creada");
         }
+
     }
 
     @Override
